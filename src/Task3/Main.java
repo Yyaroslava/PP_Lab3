@@ -5,55 +5,67 @@ import java.util.List;
 
 public class Main {
 	public static void main(final String[] args) {
-		final Subject english = new Subject("English");
-		final Subject physic = new Subject("Physic");
 		final Subject math = new Subject("Math");
+		final Subject english = new Subject("English");
+		final Subject physics = new Subject("Physics");
+		final Subject chemistry = new Subject("Chemistry");
 
 		final List<Subject> subjects = new ArrayList<>();
-		subjects.add(english);
-		subjects.add(physic);
 		subjects.add(math);
+		subjects.add(english);
+		subjects.add(physics);
+		subjects.add(chemistry);
 
-		final Student student1 = new Student("Sasha", "Braus", "Ellen", subjects);
-		final Student student2 = new Student("Connie", "Springer", "Pen", subjects);
-		final Student student3 = new Student("Jean", "Kirstein", "James", subjects);
+		final Student s1 = new Student("Taras", "Biliy", "Petrovich", subjects);
+		final Student s2 = new Student("Ivan", "Petrenko", "Ivanovich", subjects);
+		final Student s3 = new Student("Stepan", "Srepanov", "Bohdanovich", subjects);
+		final Student s4 = new Student("David", "Dam", "Damidovich", subjects);
 
 		final List<Student> students = new ArrayList<>();
-		students.add(student1);
-		students.add(student2);
-		students.add(student3);
+		students.add(s1);
+		students.add(s2);
+		students.add(s3);
+		students.add(s4);
 
 		final StudentSimple studentSimples = new StudentSimple();
-		studentSimples.transformationList(students);
+		studentSimples.transformed(students);
 
-		System.out.println(student1.averageMark());
+		students.get(0).addMark(4, "Math");
+		students.get(1).addMark(2, "Math");
+		students.get(2).addMark(4, "Math");
+		students.get(3).addMark(5, "Math");
 
-		students.get(0).addGrade(5, "English");
-		students.get(0).addGrade(2, "English");
-		students.get(0).addGrade(2, "English");
+		students.get(0).addMark(4, "English");
+		students.get(1).addMark(3, "English");
+		students.get(2).addMark(5, "English");
+		students.get(3).addMark(5, "English");
 
-		students.get(1).addGrade(1, "English");
-		students.get(2).addGrade(3, "English");
+		students.get(0).addMark(3, "Physics");
+		students.get(1).addMark(5, "Physics");
+		students.get(2).addMark(2, "Physics");
+		students.get(3).addMark(5, "Physics");
 
-		students.get(0).addGrade(5, "Physic");
-		students.get(1).addGrade(3, "Physic");
-		students.get(2).addGrade(2, "Physic");
+		students.get(0).addMark(4, "Chemistry");
+		students.get(1).addMark(2, "Chemistry");
+		students.get(2).addMark(4, "Chemistry");
+		students.get(3).addMark(5, "Chemistry");
 
-		students.get(0).addGrade(4, "Math");
-		students.get(1).addGrade(2, "Math");
-		students.get(2).addGrade(1, "Math");
+		System.out.println("Average mark is:");
+		System.out.println(s1.averageMark());
+
+		System.out.println(s1.distinctEnglish());
 
 		final Group group = new Group(students);
-		group.addSubject(subjects,"IT");
-
-		System.out.println("Best student's information");
+		System.out.println("Best student's information: ");
 		System.out.println(group.bestStudentStream());
 
-		students.get(0).addGrade(4, "IT");
-		students.get(1).addGrade(3, "IT");
-		students.get(2).addGrade(3, "IT");
-		System.out.println(group.printSurnameHyphen());
+		System.out.println("Sorted without '3' mark: ");
+		System.out.println(group.sortByMark());
 
+		System.out.println("Sorted by name: ");
+		System.out.println(group.sortByName());
+
+		System.out.println("Students' lastnames: ");
+		System.out.println(group.printLastnames());
 	}
 }
-

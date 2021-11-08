@@ -1,18 +1,14 @@
 package Task3;
 
 public class Subject {
-	private String subjectName;
+	private String subject;
 
-	public Subject(final String subjectName) {
-		this.subjectName = subjectName;
+	public Subject(final String subject) {
+		this.subject = subject;
 	}
 
 	public String getNameSubject() {
-		return subjectName;
-	}
-
-	public void setNameSubject(final String nameSubject) {
-		this.subjectName = subjectName;
+		return subject;
 	}
 }
 
